@@ -12,8 +12,7 @@ function TeamChannelPreview({ channel, type }) {
   }
 
   function DirectPreview() {
-    const members = object
-      .values(channel.state.members)
+    const members = Object.values(channel.state.members)
       .filter(({ user }) => user.id !== client.userID);
     return (
       <div className="channel-preview__item single">
