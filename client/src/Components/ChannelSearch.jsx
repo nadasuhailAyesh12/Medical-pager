@@ -15,27 +15,27 @@ function ChannelSearch() {
 
   async function getChannels(text) {
     try {
-      //Todo:fetch channels
+   
     } catch (error) {
       setQuery("");
     }
   }
 
   return (
-    <div className="channel-search__container">
-      <div className="channel-search__input__wrapper">
-        <div className="channel-serach__input__icon">
-          <SearchIcon />
-        </div>
-        <input
-          type="text"
-          ClassName="channel-search__input__text"
-          onChange={onSearch}
-          value={query}
-          placeholder="search"
+     <div className="channel-search__container">
+            <div className="channel-search__input__wrapper">
+                <div className="channel-serach__input__icon">
+                    <SearchIcon />
+                </div>
+                <input 
+                    className="channel-search__input__text" 
+                    placeholder="Search" 
+                    type="text" 
+                    value={query}  
+                    onChange={onSearch}
         />
       </div>
-    </div>
+      </div>
   );
 }
 
