@@ -5,24 +5,26 @@ import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
 
 import HospitalIcon from "../Assets/hospital.png";
 import LogoutIcon from "../Assets/logout.png";
-import { List } from "stream-chat-react/dist/components/AutoCompleteTextarea/List";
 
-function SideBar() {
+const cookies = new Cookies()
+
+function SideBar({logout}) {
   return (
     <div className="channel-list__sidebar">
       <div className="channel-list__sidebar__icon1">
-        <div ClassName="icon1__inner">
+        <div className="icon1__inner">
           <img src={HospitalIcon} alt="hospital" width="30" />
         </div>
       </div>
       <div className="channel-list__sidebar__icon2">
-        <div ClassName="icon1__inner">
-          <img src={LogoutIcon} alt="logout" width="30" />
+        <div className="icon1__inner" onClick={logout}>
+          <img src={LogoutIcon} alt="logout" width="30"  />
         </div>
       </div>
     </div>
   );
 }
+
 function CompanyHeader() {
   return (
     <div className="channel-list__header">
@@ -32,9 +34,22 @@ function CompanyHeader() {
 }
 
 function ChannelListContainer() {
+   
+  function logout() {
+    cookies.remove('token');
+    cookies.remove('userId');
+    cookies.remove('username');
+    cookies.remove('fullName');
+    cookies.remove('avatarURL');
+    cookies.remove('phoneNumber');
+    cookies.remove('hashedPassword');
+    
+      window.location.reload();
+
+  }
   return (
     <>
-      <SideBar />
+      <SideBar logout={logout} />
       <div className="channel-list__list__wrapper">
         <CompanyHeader />
         <ChannelSearch />
